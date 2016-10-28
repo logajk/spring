@@ -1,2 +1,13 @@
 config:
   key: dev
+spring:
+  datasource:
+    url: jdbc:db2://localhost:50000/SAMPLE
+    username: db2admin
+    password: db2admin
+    driver-class-name: com.ibm.db2.jcc.DB2Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
