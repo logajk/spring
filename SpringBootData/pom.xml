@@ -56,7 +56,12 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-
+		<!-- Generacion del fichero wadl -->
+		<dependency>
+			<groupId>com.autentia.web.rest</groupId>
+			<artifactId>spring-wadl-generator</artifactId>
+			<version>1.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
