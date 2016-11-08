@@ -29,7 +29,7 @@ public class WebAppConfigTest {
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
-    private static final String PROPERTY_NAME_HIBERNATE_AUTOCOMMIT = "hibernate.connection.autocommit";
+//    private static final String PROPERTY_NAME_HIBERNATE_AUTOCOMMIT = "hibernate.connection.autocommit";
     
     @Resource
     private Environment env;
@@ -39,7 +39,7 @@ public class WebAppConfigTest {
     	
     	properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
     	properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
-    	properties.put(PROPERTY_NAME_HIBERNATE_AUTOCOMMIT, env.getProperty(PROPERTY_NAME_HIBERNATE_AUTOCOMMIT));
+//    	properties.put(PROPERTY_NAME_HIBERNATE_AUTOCOMMIT, env.getProperty(PROPERTY_NAME_HIBERNATE_AUTOCOMMIT));
     	
     	return properties;
     }

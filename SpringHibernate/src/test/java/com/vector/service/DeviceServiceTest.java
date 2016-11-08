@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.init.WebAppConfigTest;
 import com.vector.model.Status;
@@ -18,6 +19,7 @@ import com.vector.model.WkstDevice;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=WebAppConfigTest.class)
+@Transactional
 public class DeviceServiceTest {
 
 	static final Logger LOGGER = Logger.getLogger(DeviceServiceTest.class);
@@ -64,6 +66,8 @@ public class DeviceServiceTest {
 	
 	@Test
 	public void testRemoveDevice(){
+		testAddDevice();
+		
 		List<WkstDevice> listado = service.findByLogicalName("%TEST");
 		
 		assertNotNull(listado);

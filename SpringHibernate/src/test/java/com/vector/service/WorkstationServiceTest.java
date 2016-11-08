@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.init.WebAppConfigTest;
 import com.vector.model.Status;
@@ -29,6 +30,7 @@ import com.vector.model.WkstWorkstation;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=WebAppConfigTest.class)
+@Transactional
 public class WorkstationServiceTest {
 
 	static final Logger LOGGER = Logger.getLogger(WorkstationServiceTest.class);
@@ -72,7 +74,7 @@ public class WorkstationServiceTest {
 	
 	@Test
 	public void testFindByIdWithCounters(){
-		WkstWorkstation workstation = service.findByIdWithCounters("A444001A");
+		WkstWorkstation workstation = service.findByIdWithCounters("LATM0008");
 		
 		assertNotNull(workstation);
 		
@@ -122,19 +124,25 @@ public class WorkstationServiceTest {
 	
 	@Test
 	public void testUpdateDevices(){
-		WkstWorkstation wkst = service.findByIdWithDevices("ATM_TEST");
+		WkstWorkstation wkst = service.findByIdWithDevices("LATM0008");
+		WkstDevice device = populateDevice().get(0);
+		device.setWorkStation(wkst);
 		
 		assertNotNull(wkst);
 		
-		wkst.setDevices(populateDevice());
+		int tamOriginal = wkst.getDevices().size();
+		
+		wkst.getDevices().add(device);
 		
 		service.updateWkst(wkst);
 		
-		assertTrue(service.findByIdWithDevices("LATM0008").getDevices().size() > 0);
+		assertEquals(tamOriginal+1, service.findByIdWithDevices("LATM0008").getDevices().size());
 	}
 	
 	@Test
 	public void testDeleteWkst(){
+		testAddWkst();
+		
 		WkstWorkstation wkst = service.findByID("ATMTEST");
 		
 		LOGGER.debug(wkst);

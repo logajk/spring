@@ -10,12 +10,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vector.init.WebAppConfigTest;
 import com.vector.model.WkstCommand;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=WebAppConfigTest.class)
+@Transactional
 public class CommandServiceTest {
 
 	static final Logger LOGGER = Logger.getLogger(CommandServiceTest.class);
@@ -66,7 +68,7 @@ public class CommandServiceTest {
 		WkstCommand command = new WkstCommand();
 		
 		command.setWorkstation(workstationService.findByID("LATM0008"));
-//		command.setCommand("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><atm_commands></atm_commands>");
+		command.setCommand("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><atm_commands></atm_commands>");
 //		command.setCommand("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><atm_commands>");
 //		command.setCommand("Prueba 1");
 		
@@ -86,9 +88,13 @@ public class CommandServiceTest {
 	@Test
 	public void testDelete(){
 		
-		int tamanio = service.findAll().size();
+		List<WkstCommand> listado = service.findAll();
 		
-		service.delete(200);
+		assertNotNull(listado);
+		
+		int tamanio = listado.size();
+		
+		service.delete(listado.get(0).getId());
 		
 		assertEquals(tamanio-1, service.findAll().size());
 	}
