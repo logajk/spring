@@ -16,12 +16,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.abalia.model.Demanda;
-import com.abalia.model.Oferta;
-import com.abalia.model.OfertaExt;
 import com.abalia.model.PerfilesCount;
-import com.abalia.repo.DemandaRepository;
-import com.abalia.repo.OfertaRepository;
+import com.abalia.model.demanda.Demanda;
+import com.abalia.model.oferta.Oferta;
+import com.abalia.model.oferta.OfertaExt;
+import com.abalia.repo.demanda.DemandaRepository;
+import com.abalia.repo.oferta.OfertaRepository;
 
 @Service
 public class DemandaServiceImpl implements DemandaService {

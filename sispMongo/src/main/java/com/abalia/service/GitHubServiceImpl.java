@@ -3,10 +3,11 @@ package com.abalia.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.abalia.model.GitHub;
-import com.abalia.repo.GitHubRepository;
+import com.abalia.model.github.GitHub;
+import com.abalia.repo.github.GitHubRepository;
 
 @Service
 public class GitHubServiceImpl implements GitHubService {
@@ -23,6 +24,11 @@ public class GitHubServiceImpl implements GitHubService {
 	}
 	
 	@Override
+	public List<GitHub> findAllSortByFollowers(){
+		return repository.findAll(new Sort(Sort.Direction.DESC, "followers"));
+	}
+	
+	@Override
 	public GitHub findById(String id){
 		return repository.findOne(id);
 	}
@@ -35,5 +41,5 @@ public class GitHubServiceImpl implements GitHubService {
 	@Override
 	public boolean exists(String id){
 		return repository.exists(id);
-	}
+	} 
 }

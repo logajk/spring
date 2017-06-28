@@ -1,4 +1,4 @@
-package com.abalia.model;
+package com.abalia.model.oferta;
 
 import java.math.BigDecimal;
 

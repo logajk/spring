@@ -1,4 +1,4 @@
-package com.abalia.repo;
+package com.abalia.repo.demanda;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
@@ -19,8 +19,8 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import com.abalia.model.Demanda;
 import com.abalia.model.PerfilesCount;
+import com.abalia.model.demanda.Demanda;
 
 public class DemandaRepositoryImpl implements DemandaRepositoryCustom {
 

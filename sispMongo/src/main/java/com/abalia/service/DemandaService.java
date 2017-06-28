@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.abalia.model.Demanda;
-import com.abalia.model.OfertaExt;
 import com.abalia.model.PerfilesCount;
+import com.abalia.model.demanda.Demanda;
+import com.abalia.model.oferta.OfertaExt;
 
 public interface DemandaService {
 

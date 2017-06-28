@@ -21,7 +21,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.abalia.SispMongoApplication;
-import com.abalia.model.Demanda;
+import com.abalia.model.demanda.Demanda;
 import com.abalia.service.DemandaService;
 
 @RunWith(SpringRunner.class)

@@ -1,4 +1,4 @@
-package com.abalia.repo;
+package com.abalia.repo.oferta;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -9,9 +9,9 @@ import java.util.Map;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import com.abalia.model.Oferta;
 import com.abalia.model.PerfilesCount;
 import com.abalia.model.Portal;
+import com.abalia.model.oferta.Oferta;
 
 public interface OfertaRepositoryCustom {
 

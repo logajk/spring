@@ -2,7 +2,7 @@ package com.abalia.service;
 
 import java.util.List;
 
-import com.abalia.model.Tag;
+import com.abalia.model.tag.Tag;
 
 public interface TagService {
 

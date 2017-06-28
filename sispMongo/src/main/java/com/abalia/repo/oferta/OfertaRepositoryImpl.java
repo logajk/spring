@@ -1,4 +1,4 @@
-package com.abalia.repo;
+package com.abalia.repo.oferta;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -20,10 +20,9 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
 
-
-import com.abalia.model.Oferta;
 import com.abalia.model.PerfilesCount;
 import com.abalia.model.Portal;
+import com.abalia.model.oferta.Oferta;
 
 public class OfertaRepositoryImpl implements OfertaRepositoryCustom {
 

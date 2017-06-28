@@ -1,4 +1,4 @@
-package com.abalia.model;
+package com.abalia.model.demanda;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.abalia.model.Portal;
+
 @Document(collection="demandas")
 public class Demanda {
 
@@ -14,6 +16,8 @@ public class Demanda {
 	private String id;
 	
 	private String nombre;
+	
+	private String apellidos;
 	
 	private Set<String> conocimientos;
 	
@@ -138,7 +142,22 @@ public class Demanda {
 	 */
 	@Override
 	public String toString() {
-		return "Demanda [id=" + id + ", nombre=" + nombre + ", conocimientos=" + conocimientos + ", titulo=" + titulo
-				+ ", fechaAlta=" + fechaAlta + ", portal=" + portal + ", email=" + email + "]";
+		return "Demanda [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", conocimientos="
+				+ conocimientos + ", titulo=" + titulo + ", fechaAlta=" + fechaAlta + ", portal=" + portal + ", email="
+				+ email + "]";
+	}
+
+	/**
+	 * @return the apellidos
+	 */
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	/**
+	 * @param apellidos the apellidos to set
+	 */
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 }

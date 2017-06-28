@@ -98,36 +98,36 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.asciidoctor</groupId>
-				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>1.5.3</version>
-				<executions>
-					<execution>
-						<id>generate-docs</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>process-asciidoc</goal>
-						</goals>
-						<configuration>
-							<backend>html</backend>
-							<doctype>book</doctype>
-							<attributes>
-								<snippets>${project.build.directory}/generated-snippets</snippets>
-							</attributes>
-							<sourceDirectory>${project.build.directory}/generated-snippets</sourceDirectory>
-							<outputDirectory>target/generated-docs</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.springframework.restdocs</groupId>
-						<artifactId>spring-restdocs-asciidoctor</artifactId>
-						<version>1.2.1.RELEASE</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.asciidoctor</groupId> -->
+<!-- 				<artifactId>asciidoctor-maven-plugin</artifactId> -->
+<!-- 				<version>1.5.3</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>generate-docs</id> -->
+<!-- 						<phase>prepare-package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>process-asciidoc</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<backend>html</backend> -->
+<!-- 							<doctype>book</doctype> -->
+<!-- 							<attributes> -->
+<!-- 								<snippets>${project.build.directory}/generated-snippets</snippets> -->
+<!-- 							</attributes> -->
+<!-- 							<sourceDirectory>${project.build.directory}/generated-snippets</sourceDirectory> -->
+<!-- 							<outputDirectory>target/generated-docs</outputDirectory> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				<dependencies> -->
+<!-- 					<dependency> -->
+<!-- 						<groupId>org.springframework.restdocs</groupId> -->
+<!-- 						<artifactId>spring-restdocs-asciidoctor</artifactId> -->
+<!-- 						<version>1.2.1.RELEASE</version> -->
+<!-- 					</dependency> -->
+<!-- 				</dependencies> -->
+<!-- 			</plugin> -->
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.maven.plugins</groupId> -->
 			<!-- <artifactId>maven-resources-plugin</artifactId> -->

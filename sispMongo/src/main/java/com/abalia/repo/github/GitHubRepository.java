@@ -1,8 +1,8 @@
-package com.abalia.repo;
+package com.abalia.repo.github;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.abalia.model.GitHub;
+import com.abalia.model.github.GitHub;
 
 public interface GitHubRepository extends MongoRepository<GitHub, String> {
 

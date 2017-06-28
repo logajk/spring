@@ -1,10 +1,10 @@
-package com.abalia.repo;
+package com.abalia.repo.demanda;
 
 import java.util.List;
 import java.util.Map;
 
-import com.abalia.model.Demanda;
 import com.abalia.model.PerfilesCount;
+import com.abalia.model.demanda.Demanda;
 
 public interface DemandaRepositoryCustom {
 

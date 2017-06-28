@@ -27,11 +27,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abalia.model.Demanda;
-import com.abalia.model.OfertaExt;
 import com.abalia.model.PerfilesCount;
 import com.abalia.model.Portal;
-import com.abalia.model.Tag;
+import com.abalia.model.demanda.Demanda;
+import com.abalia.model.oferta.OfertaExt;
+import com.abalia.model.tag.Tag;
 import com.abalia.service.DemandaService;
 import com.abalia.service.TagService;
 import com.abalia.utils.ComunCollection;
@@ -204,6 +204,7 @@ public class DemandaController {
 			log.debug("Voy a buscar candidatos");
 			
 			try {
+				log.debug(userAgent.doc.innerHTML());
 				Element element = userAgent.doc.findFirst("<font>Buscador").getParent();
 				log.debug("Link Buscador C.V encontrado");
 				log.debug("link: "+element.getAt("href"));
@@ -346,16 +347,18 @@ public class DemandaController {
 			if(!demandaService.exists(id)){
 				userAgent.visit(url_candidato+id);
 				
-				Element e = userAgent.doc.findFirst("<b>E-Mail").getParent().nextSiblingElement();
+				Element email = userAgent.doc.findFirst("<b>E-Mail").getParent().nextSiblingElement();
+				Element nombre = userAgent.doc.findFirst("<b>Nombre").getParent().nextSiblingElement();
+				Element apellidos = userAgent.doc.findFirst("<b>Apellidos").getParent().nextSiblingElement();
 				
-				if(!e.getText().trim().equals("Información NO disponible")){
+				if(!email.getText().trim().equals("Información NO disponible") && !nombre.getText().trim().equals("Información NO disponible") && !apellidos.getText().trim().equals("Información NO disponible")){
 					log.debug("Información diponible");
 					demanda.setId(id);
-					demanda.setEmail(e.findFirst("<a>").getText());
-					e = userAgent.doc.findFirst("<b>Nombre").getParent().nextSiblingElement();
-					demanda.setNombre(e.getText().trim());
-					e = userAgent.doc.findFirst("<b>Apellidos").getParent().nextSiblingElement();
-					demanda.setNombre(demanda.getNombre()+" "+e.getText().trim());
+					demanda.setEmail(email.findFirst("<a>").getText());
+					email = userAgent.doc.findFirst("<b>Nombre").getParent().nextSiblingElement();
+					demanda.setNombre(email.getText().trim());
+					email = userAgent.doc.findFirst("<b>Apellidos").getParent().nextSiblingElement();
+					demanda.setApellidos(email.getText().trim());
 					demanda.setFechaAlta(new Date());
 					demanda.setPortal(Portal.MIL_TRABAJOS);
 					

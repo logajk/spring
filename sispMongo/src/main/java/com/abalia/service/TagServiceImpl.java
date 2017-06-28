@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.abalia.model.Tag;
-import com.abalia.repo.TagRepository;
+import com.abalia.model.tag.Tag;
+import com.abalia.repo.tag.TagRepository;
 
 @Service
 public class TagServiceImpl implements TagService {

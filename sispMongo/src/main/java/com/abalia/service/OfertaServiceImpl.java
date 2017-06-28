@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -15,13 +14,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.abalia.model.Demanda;
-import com.abalia.model.DemandaExt;
-import com.abalia.model.Oferta;
 import com.abalia.model.PerfilesCount;
 import com.abalia.model.Portal;
-import com.abalia.repo.DemandaRepository;
-import com.abalia.repo.OfertaRepository;
+import com.abalia.model.demanda.Demanda;
+import com.abalia.model.demanda.DemandaExt;
+import com.abalia.model.oferta.Oferta;
+import com.abalia.repo.demanda.DemandaRepository;
+import com.abalia.repo.oferta.OfertaRepository;
 
 @Service
 public class OfertaServiceImpl implements OfertaService {

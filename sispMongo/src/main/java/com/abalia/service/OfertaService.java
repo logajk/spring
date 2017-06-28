@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.apache.commons.collections.CollectionUtils;
 
-import com.abalia.model.Demanda;
-import com.abalia.model.DemandaExt;
-import com.abalia.model.Oferta;
 import com.abalia.model.PerfilesCount;
 import com.abalia.model.Portal;
+import com.abalia.model.demanda.Demanda;
+import com.abalia.model.demanda.DemandaExt;
+import com.abalia.model.oferta.Oferta;
 
 public interface OfertaService {
 

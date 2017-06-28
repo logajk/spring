@@ -1,6 +1,7 @@
 package com.abalia.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -21,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abalia.model.Demanda;
-import com.abalia.model.GitHub;
+import com.abalia.model.demanda.Demanda;
+import com.abalia.model.github.GitHub;
 import com.abalia.service.DemandaService;
 import com.abalia.service.GitHubService;
 import com.jaunt.Element;
@@ -34,7 +35,7 @@ import com.jaunt.UserAgent;
 
 @RestController
 @RequestMapping("/github")
-@Api(name="Servicio github", description="M&eacute;todos para obterner infomaci&oacute;n de GitHub", visibility=ApiVisibility.PUBLIC, stage=ApiStage.RC)
+@Api(name="Servicio github", description="Metodos para obterner infomacion de GitHub", visibility=ApiVisibility.PUBLIC, stage=ApiStage.RC)
 @ApiVersion(since="1.0")
 public class GitHubController {
 
@@ -67,7 +68,7 @@ public class GitHubController {
 				
 				 try {
 					userAgent.visit(url_busqueda_google);
-					userAgent.doc.apply("\""+org.apache.commons.lang3.StringUtils.stripAccents(demanda.getNombre())+"\" site:github.com");
+					userAgent.doc.apply("\""+org.apache.commons.lang3.StringUtils.stripAccents(demanda.getNombre()+" "+demanda.getApellidos())+"\" site:github.com");
 					userAgent.doc.submit();
 					log.debug(userAgent.doc.innerHTML());
 					if(!userAgent.doc.innerText().contains(USUARIO_NO_ENCONTRADO) && !userAgent.doc.innerText().contains(NINGUN_RESULTADO)){
@@ -118,8 +119,12 @@ public class GitHubController {
 		}else{
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
-		
+	}
+	
+	@RequestMapping()
+	@ApiMethod(description="Devuelve todos los perfiles de usuarios que tengan creada cuenta en GitHub")
+	public List<GitHub> getAll(){
+		return gitHubService.findAllSortByFollowers();
 	}
 	
 	private UserAgent getUserAgent(){
@@ -176,8 +181,12 @@ public class GitHubController {
 			tabs = userAgent.doc.findEvery("<span class=d-block>");
 			log.debug("Tecnologias encontradas " + tabs.size());
 			if (tabs.size() > 0) {
+				String tecnologia;
 				for(Element e : tabs){
-					gitHub.getTecnologias().add(org.apache.commons.lang3.StringUtils.normalizeSpace(e.nextSiblingElement().nextSiblingElement().innerText().trim().replaceAll("\n", "")).split(" ")[0]);
+					tecnologia = org.apache.commons.lang3.StringUtils.normalizeSpace(e.nextSiblingElement().nextSiblingElement().innerText().trim().replaceAll("\n", "")).split(" ")[0];
+					if(StringUtils.isNotEmpty(tecnologia)){
+						gitHub.getTecnologias().add(tecnologia);
+					}
 				}
 			}
 			return gitHub;

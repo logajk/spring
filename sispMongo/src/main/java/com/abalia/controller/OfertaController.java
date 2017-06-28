@@ -25,11 +25,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abalia.model.DemandaExt;
-import com.abalia.model.Oferta;
 import com.abalia.model.PerfilesCount;
 import com.abalia.model.Portal;
-import com.abalia.model.Tag;
+import com.abalia.model.demanda.DemandaExt;
+import com.abalia.model.oferta.Oferta;
+import com.abalia.model.tag.Tag;
 import com.abalia.service.OfertaService;
 import com.abalia.service.TagService;
 import com.abalia.utils.ComunCollection;

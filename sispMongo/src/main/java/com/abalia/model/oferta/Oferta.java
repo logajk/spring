@@ -1,4 +1,4 @@
-package com.abalia.model;
+package com.abalia.model.oferta;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.abalia.model.Portal;
 
 @Document(collection="ofertas")
 public class Oferta {
